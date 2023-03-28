@@ -35,7 +35,7 @@ To generate a configuration file, run:
 
 Once the configuration file is generated, copy it to your Jupyter configuration directory (defined by yourself). For example:
 
-`cp /ceph/hpc/home/eumianlex/.jupyter/jupyter_lab_config.py Mylab1.py`
+`cp /ceph/hpc/home/eumianlex/.jupyter/jupyter_lab_config.py /ceph/hpc/home/eumianlex/Jupyterlab/Mylab1.py`
 
 You can copy multiple times for different purposes if you want to build more than one lab.
 
@@ -46,9 +46,10 @@ c = get_config()  # noqa
 c.ServerApp.root_dir = '/ceph/hpc/data/r2020235596-users/mianle/test'
 c.ServerApp.open_browser = False
 ```
-
+The previous ase and jupyter environment settings only need to be done once.
 
 ### Now it is time to launch Jupyter Notebook/Lab:
+Here is the bash script lanuchJupyter1.sh:
 ```
 #!/bin/bash
 # Get the hostname
@@ -62,9 +63,12 @@ echo "ssh -N -f -L "$port":"$node":"$port" <your_user_name>@vglogin0005.vega.izu
 jupyter-lab --port="$port" --ip="$node" --config=/ceph/hpc/home/eumianlex/Jupyterlab/Mylab1.py --LabApp.name="Lab1"
 ```
 
-Run this Bash script every time you want to launch your notebook. Copy and paste the first line to your new terminal in your local computer (SSH to the IP and port), and copy the output HTTP address to your local browser. You will launch your Jupyter Lab.
+You just need to run this bash script every time you want to launch your jupyter notebook. Copy and paste the first line to your new terminal in your local computer (SSH to the IP and port), and copy the output HTTP address to your local browser. You will launch your Jupyter Lab.
+
+
 
 It is strongly recommended that each lab works for one of your projects. Save the Bash script to a different project directory and launch it when you work on a specific project. Remember to use different port, configuration and lab name when running multi-client jupyter notebook/lab.
+
 
 #### For example:
 In Lab1 : 
