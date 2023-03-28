@@ -48,5 +48,17 @@ c.ServerApp.open_browser = False
 ```
 
 
-
+###Now it is time to launch Jupyter Notebook/Lab:
+```
+#!/bin/bash
+# Get the hostname
+hostname=$(hostname)
+# Split the hostname using "." as the separator and get the first part
+node=$(echo "$hostname" | cut -d'.' -f1)
+port=40000
+module load Anaconda3/2022.05
+source activate mylab
+echo "ssh -N -f -L "$port":"$node":"$port" <your_user_name>@vglogin0005.vega.izum.si"
+jupyter-lab --port="$port" --ip="$node" --config=/ceph/hpc/home/eumianlex/Jupyterlab/Mylab1.py --LabApp.name="Lab1"
+```
 
