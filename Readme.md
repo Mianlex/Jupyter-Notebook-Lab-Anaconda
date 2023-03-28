@@ -48,7 +48,7 @@ c.ServerApp.open_browser = False
 ```
 
 
-###Now it is time to launch Jupyter Notebook/Lab:
+### Now it is time to launch Jupyter Notebook/Lab:
 ```
 #!/bin/bash
 # Get the hostname
@@ -61,4 +61,40 @@ source activate mylab
 echo "ssh -N -f -L "$port":"$node":"$port" <your_user_name>@vglogin0005.vega.izum.si"
 jupyter-lab --port="$port" --ip="$node" --config=/ceph/hpc/home/eumianlex/Jupyterlab/Mylab1.py --LabApp.name="Lab1"
 ```
+
+Run this Bash script every time you want to launch your notebook. Copy and paste the first line to your new terminal in your local computer (SSH to the IP and port), and copy the output HTTP address to your local browser. You will launch your Jupyter Lab.
+
+It is strongly recommended that each lab works for one of your projects. Save the Bash script to a different project directory and launch it when you work on a specific project. Remember to use different port, configuration and lab name when running multi-client jupyter notebook/lab.
+
+#### For example:
+In Lab1 : 
+```
+#!/bin/bash
+# Get the hostname
+hostname=$(hostname)
+# Split the hostname using "." as the separator and get the first part
+node=$(echo "$hostname" | cut -d'.' -f1)
+port=40000
+module load Anaconda3/2022.05
+source activate mylab
+echo "ssh -N -f -L "$port":"$node":"$port" <your_user_name>@vglogin0005.vega.izum.si"
+jupyter-lab --port="$port" --ip="$node" --config=/ceph/hpc/home/eumianlex/Jupyterlab/Mylab1.py --LabApp.name="Lab1"
+```
+
+In Lab2 :
+```
+#!/bin/bash
+# Get the hostname
+hostname=$(hostname)
+# Split the hostname using "." as the separator and get the first part
+node=$(echo "$hostname" | cut -d'.' -f1)
+port=40001
+module load Anaconda3/2022.05
+source activate mylab
+echo "ssh -N -f -L "$port":"$node":"$port" <your_user_name>@vglogin0005.vega.izum.si"
+jupyter-lab --port="$port" --ip="$node" --config=/ceph/hpc/home/eumianlex/Jupyterlab/Mylab2.py --LabApp.name="Lab2"
+```
+
+
+
 
