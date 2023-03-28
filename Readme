@@ -1,0 +1,6 @@
+How to launch Jupyter Notebook/Lab on Vega?
+
+On Vega, the tutorial in webpage(https://doc.vega.izum.si/jupyter/) has a method for launching Jupyter notebook.
+However, the default method in webpage require to login to Vega gpulogin node and book a compute node for running Jupyter Notebook. After my test, the Jupyter Notebook can also launch in cpu/gpu login node or CPU compute nodes, which is quite similar to Nilfhim. 
+The Jupyter notebook on Vega is based on Anaconda3 package. When launch the default one, the base environment in Anaconda, some error may occur, like the NumPy conflict or ase module fail to load. 
+According to run Jupyter notebook fluently with our requirement, here is a method to build a kernel based on the Anaconda3-python environment.
