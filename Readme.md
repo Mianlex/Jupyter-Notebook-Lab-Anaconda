@@ -1,4 +1,4 @@
-#How to launch Jupyter Notebook/Lab on Vega?
+# How to launch Jupyter Notebook/Lab on Vega?
 
 This guide explains how to launch Jupyter Notebook/Lab on Vega, the Slovenian national supercomputer. The default method provided on the Vega documentation page requires users to login to the Vega gpulogin node and book a compute node for running Jupyter Notebook. However, after testing, it has been found that Jupyter Notebook can also be launched on the cpu/gpu login node or CPU compute nodes, which is similar to Nilfhim.
 
