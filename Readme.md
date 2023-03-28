@@ -5,9 +5,8 @@ However, the default method in webpage require to login to Vega gpulogin node an
 The Jupyter notebook on Vega is based on Anaconda3 package. When launch the default one, the base environment in Anaconda, some error may occur, like the NumPy conflict or ase module fail to load. 
 According to run Jupyter notebook fluently with our requirement, here is a method to build a kernel based on the Anaconda3-python environment.
 
-'''
-module load Anaconda3/2022.05
-'''
+'''module load Anaconda3/2022.05
+
 
 conda create --yes --name mylab python=3.9.7
 
