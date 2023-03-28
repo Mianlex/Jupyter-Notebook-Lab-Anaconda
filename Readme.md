@@ -19,6 +19,7 @@ The Jupyter notebook on Vega is based on the Anaconda3 package. When launching t
 4.Install ASE, Jupyter, and scientific calculation environment:
 
 `conda install -c conda-forge ase jupyterlab nodejs`
+
 `conda install ipykernel`
 
 5.Install any additional package(s) that you need:
@@ -31,4 +32,21 @@ After building the environment, build a Jupyter Notebook/Lab configuration befor
 To generate a configuration file, run:
 
 `jupyter lab --generate-config`
+
+Once the configuration file is generated, copy it to your Jupyter configuration directory (defined by yourself). For example:
+
+`cp /ceph/hpc/home/eumianlex/.jupyter/jupyter_lab_config.py Mylab1.py`
+
+You can copy multiple times for different purposes if you want to build more than one lab.
+
+In `Mylab1.py`:
+```
+# Configuration file for lab.
+c = get_config()  # noqa
+c.ServerApp.root_dir = '/ceph/hpc/data/r2020235596-users/mianle/test'
+c.ServerApp.open_browser = False
+```
+
+
+
 
