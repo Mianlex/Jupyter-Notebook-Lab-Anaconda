@@ -99,6 +99,6 @@ echo "ssh -N -f -L "$port":"$node":"$port" <your_user_name>@vglogin0005.vega.izu
 jupyter-lab --port="$port" --ip="$node" --config=/ceph/hpc/home/eumianlex/Jupyterlab/Mylab2.py --LabApp.name="Lab2"
 ```
 
-
+If you have some heavy test on jupyter notebook/lab, book a compute node and run the bash script in the compute node. Then you can lanuch your jupyter notebook in compute node.
 
 
