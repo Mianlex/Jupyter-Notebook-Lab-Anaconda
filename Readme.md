@@ -56,18 +56,21 @@ Here is the bash script launchJupyter1.sh:
 hostname=$(hostname)
 # Split the hostname using "." as the separator and get the first part
 node=$(echo "$hostname" | cut -d'.' -f1)
-port=40000
+port=<your_port>
+pathname=<your_labname>
 module load Anaconda3/2022.05
-source activate mylab
-echo "ssh -N -f -L "$port":"$node":"$port" <your_user_name>@vglogin0005.vega.izum.si"
-jupyter-lab --port="$port" --ip="$node" --config=/ceph/hpc/home/eumianlex/Jupyterlab/Mylab1.py --LabApp.name="Lab1"
+eval "$(conda shell.bash hook)"
+conda activate <your_env_name>
+echo "ssh -N -f -L "$port":"$node":"$port" <your_usr_name>@vglogin0005.vega.izum.si"
+export JUPYTERLAB_WORKSPACES_DIR=<your_workspaces_path> #define different workspaces on your own to separate different jupyterlab project
+jupyter-lab  --port="$port" --ip="$node" --config=<your_configuration_file_path> --LabApp.name="$pathname"
 ```
 
 You just need to run this bash script every time you want to launch your jupyter notebook. Copy and paste the first line to your new terminal in your local computer (SSH to the IP and port), and copy the output HTTP address to your local browser. You will launch your Jupyter Lab.
 
 
 
-It is strongly recommended that each lab works for one of your projects. Save the Bash script to a different project directory and launch it when you work on a specific project. Remember to use different port, configuration and lab name when running multi-client jupyter notebook/lab.
+It is strongly recommended that each lab works for one of your projects. Save the Bash script to a different project directory and launch it when you work on a specific project. To separate differnt jupyterlab, the best way is to define different `JUPYTERLAB_WORKSPACES_DIR` on your own which will combine with different projects. Remember to use different port, configuration and lab name when running multi-client jupyter notebook/lab.
 
 
 #### For example:
@@ -78,11 +81,14 @@ In Lab1 :
 hostname=$(hostname)
 # Split the hostname using "." as the separator and get the first part
 node=$(echo "$hostname" | cut -d'.' -f1)
-port=40000
+port=<your_port_lab1>
+pathname=<your_labname_lab1>
 module load Anaconda3/2022.05
-source activate mylab
-echo "ssh -N -f -L "$port":"$node":"$port" <your_user_name>@vglogin0005.vega.izum.si"
-jupyter-lab --port="$port" --ip="$node" --config=/ceph/hpc/home/eumianlex/Jupyterlab/Mylab1.py --LabApp.name="Lab1"
+eval "$(conda shell.bash hook)"
+conda activate <your_env_name>
+echo "ssh -N -f -L "$port":"$node":"$port" <your_usr_name>@vglogin0005.vega.izum.si"
+export JUPYTERLAB_WORKSPACES_DIR=<your_workspaces_path_lab1> #define different workspaces on your own to separate different jupyterlab project
+jupyter-lab  --port="$port" --ip="$node" --config=<your_configuration_file_path_lab1> --LabApp.name="$pathname"
 ```
 
 In Lab2 :
@@ -92,11 +98,14 @@ In Lab2 :
 hostname=$(hostname)
 # Split the hostname using "." as the separator and get the first part
 node=$(echo "$hostname" | cut -d'.' -f1)
-port=40001
+port=<your_port_lab2>
+pathname=<your_labname_lab2>
 module load Anaconda3/2022.05
-source activate mylab
-echo "ssh -N -f -L "$port":"$node":"$port" <your_user_name>@vglogin0005.vega.izum.si"
-jupyter-lab --port="$port" --ip="$node" --config=/ceph/hpc/home/eumianlex/Jupyterlab/Mylab2.py --LabApp.name="Lab2"
+eval "$(conda shell.bash hook)"
+conda activate <your_env_name>
+echo "ssh -N -f -L "$port":"$node":"$port" <your_usr_name>@vglogin0005.vega.izum.si"
+export JUPYTERLAB_WORKSPACES_DIR=<your_workspaces_path_lab2> #define different workspaces on your own to separate different jupyterlab project
+jupyter-lab  --port="$port" --ip="$node" --config=<your_configuration_file_path_lab2> --LabApp.name="$pathname"
 ```
 
 If you have some heavy test on jupyter notebook/lab, book a compute node and run the bash script in the compute node. Then you can launch your jupyter notebook in compute node.
